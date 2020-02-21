@@ -22,15 +22,32 @@ namespace Órai0221
 
                 switch (választás)
                 {
-                    case "E":Elmegy(teljes);break;
-                    case "B":Bejön(teljes);break;
-                    case "K":Kilépés();break;
-                    default: Console.WriteLine("Nem megfelelő választás!");break;
+                    case "E": Elmegy(teljes); break;
+                    case "B": Bejön(teljes,bent); break;
+                    case "K": Kilépés(); break;
+                    default: Console.WriteLine("Nem megfelelő választás!"); break;
                 }
 
-            } while (választás!="K");
+            } while (választás != "K");
 
             Console.ReadKey();
+        }
+        static string Bejön(string[]teljes, List<string> bent)
+        {
+            do
+            {
+                Console.Write("Kérem a rendszámot: ");
+                string adottrendszám = Console.ReadLine();
+                Console.Write("Ha kiszeretne lépni, írjon be K betűt.");
+                if (bent.Contains(adottrendszám))
+                {
+                    Console.WriteLine("Ez a jármű már beérkezett! ");
+                }
+                else
+                {
+                    bent.Add(adottrendszám);
+                }
+            } while (Console.ReadLine("K"));
         }
     }
 }
